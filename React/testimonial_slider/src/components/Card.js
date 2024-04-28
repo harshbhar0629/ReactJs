@@ -17,7 +17,7 @@ function Card(props) {
 				</div>
 
 				<div className="text-center mt-7">
-                <p className="font-bold text-2xl capitalize">{review.name}</p>
+                <p className="tracking-wider font-bold text-2xl capitalize">{review.name}</p>
 				</div>
 
 				<div className="text-center">

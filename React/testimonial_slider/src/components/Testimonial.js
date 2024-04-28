@@ -31,7 +31,7 @@ function Testimonial(props) {
     }
 
 	return (
-		<div className="w-[85vw] sm:w-[600px] bg-white flex flex-col justify-center items-center mt-10 p-10 transition-all duration-700 shadow-lg hover:drop-shadow-2xl">
+		<div className="w-[85vw] sm:w-[600px] bg-white flex flex-col justify-center items-center mt-10 p-10 transition-all duration-700 shadow-lg hover:drop-shadow-2xl rounded-md">
 			<Card review={reviews[cardIdx]}></Card>
 
 			<div className="mt-[10px]">
