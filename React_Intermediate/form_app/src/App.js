@@ -25,14 +25,23 @@ function App() {
 	// }
 
   // use Objects for handling multiple states or element
-  const [formData, setFormData] = useState({ firstName: "", lastName: "" });
-
+  const [formData, setFormData] = useState({
+		firstName: "",
+		lastName: "",
+		comments: "",
+		isVisible: false,
+	});
+  console.log(formData);
   function changeHandler(event) {
+    console.log(event.target)
     setFormData(prevFormData => {
       return {
-        ...prevFormData,
-        [event.target.name] : event.target.value
-      }
+				...prevFormData,
+				[event.target.name]:
+					event.target.type == "checkbox"
+						? event.target.checked
+						: event.target.value,
+			};
     })
   }
 
@@ -55,22 +64,57 @@ function App() {
 
 				<input
 					type="text"
-          placeholder="Enter First name.."
-          onChange={changeHandler}
-          name="firstName"
+					placeholder="Enter First name.."
+					onChange={changeHandler}
+					name="firstName"
           value={formData.firstName}
         >
         </input>
-        
-        <input
-          onChange={changeHandler}      
-          type='text'
-          placeholder='Enter Last Name..'
-          name='lastName'
+				<br></br>
+				<br></br>
+				<input
+					onChange={changeHandler}
+					type="text"
+					placeholder="Enter Last Name.."
+					name="lastName"
           value={formData.lastName}
         >
         </input>
-            
+				
+        <br></br>
+				<br></br>
+
+        <textarea
+          className='text-area'
+          onChange={changeHandler}
+          placeholder="Enter text"
+          name='comments'
+          value={formData.comments}
+          type="text"
+        >
+
+        </textarea>
+        <br></br>
+        <br></br>
+
+        <fieldset>
+          <legend>Button</legend> 
+          <input
+            type='checkbox'
+            onChange={changeHandler}
+            name='isVisible'
+            id='isVisible'
+            checked={formData.isVisible}
+          >
+          </input>
+          <label
+            htmlFor='isVisible'
+          >
+            Am I Visible
+          </label>
+        
+        </fieldset>
+        
 			</form>
 		</div>
 	);
