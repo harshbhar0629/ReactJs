@@ -1,7 +1,15 @@
 import logo from './logo.svg';
 import './App.css';
+import { useEffect, useState } from 'react';
 
 function App() {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
+  useEffect(() => {
+    setFirstName("");
+    setLastName("");
+  }, []);
 
   function changeHandler1(event) {
     // console.log("First Name: ", event.target.value);
