@@ -10,7 +10,7 @@ import Spinner from "./components/Spinner";
 import { toast } from "react-toastify";
 
 const App = () => {
-	const [courses, setCourses] = useState({});
+	const [courses, setCourses] = useState("");
 	const [loading, setLoading] = useState(true);
 	const [category, setCategory] = useState(filterData[0].title);
 
