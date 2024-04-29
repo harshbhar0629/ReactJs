@@ -289,11 +289,16 @@ function Form() {
 				</div>
 				<button
 					type="submit"
-					className="bg-blue-500 mt-[20px] hover:bg-blue-700 text-white font-bold py-2 px-5 rounded" 
+					className="bg-blue-500 mt-[20px] hover:bg-blue-700 text-white font-bold py-2 px-5 rounded"
 					onClick={showFormData}>
 					Save
 				</button>
 			</form>
+
+			{/* <fieldset>
+				<legend>Form</legend>
+				<button>formSave</button>
+			</fieldset> */}
 		</div>
 	);
 }
