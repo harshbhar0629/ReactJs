@@ -7,11 +7,16 @@ function Labs() {
   function clickHandler() {
     navigate("/support");
   }
+  
+  function backHandler() {
+		navigate(-1);
+	}
 
   return (
 		<div>
 			<div>Labs</div>
       <button onClick={clickHandler}>Move to Support</button>
+      <button onClick={backHandler}>Go back</button>
     </div>
 	);
 }

@@ -7,11 +7,16 @@ function NotFound() {
     navigate("/");
   }
 
+  function backHandler() {
+		navigate(-1);
+  }
+  
   return (
 		<div>
       <div>NotFound</div>
       <button onClick={clickHandler}>Move to home</button>
-		</div>
+      <button onClick={backHandler}>Go back</button>
+    </div>
 	);
 }
 

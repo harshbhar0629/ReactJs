@@ -6,11 +6,16 @@ function About() {
   function clickHandler() {
     navigate("/");
   }
+  
+  function backHandler() {
+		navigate(-1);
+	}
 
   return (
 		<div>
 			<div>About</div>
-			<button onClick={clickHandler}>Move to Home</button>
+      <button onClick={clickHandler}>Move to Home</button>
+      <button onClick={backHandler}>Go back</button>
 		</div>
 	);
 }

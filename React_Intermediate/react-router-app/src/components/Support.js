@@ -6,11 +6,16 @@ function Support() {
   function changeHandler() {
     navigate("/gdywedf");
   }
+  
+  function backHandler() {
+		navigate(-1);
+	}
 
   return (
 		<div>
       <div>Support</div>
       <button onClick={changeHandler}>Move to not found</button>
+      <button onClick={backHandler}>Go back</button>
 		</div>
 	);
 }
