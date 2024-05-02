@@ -16,7 +16,7 @@ export const Template = ({
 }) => {
 	return (
 		<div className="flex w-11/12 max-w-[1160px] py-12 mx-auto gap-x-12 gap-y-0 justify-between">
-			<div>
+			<div className="w-11/12 max-w-[450px] mx-auto md:mx-0 ">
 				<h1 className="text-[#F1F2FF] font-semibold text-[2rem] leading-[2.75rem]">
 					{title}
 				</h1>
