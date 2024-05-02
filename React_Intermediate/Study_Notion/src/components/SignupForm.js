@@ -6,9 +6,10 @@ import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
 import { useNavigate } from "react-router";
 // import { useState } from "react";
 
-export const SignupForm = ({setIsLoggedIn}) => {
-    const [showPassword, setShowPassword] = useState(false);
-    const navigate = useNavigate();
+export const SignupForm = ({ setIsLoggedIn }) => {
+	const [showPassword, setShowPassword] = useState(false);
+	const [confirmPass, setConfirmPass] = useState(false);
+	const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		firstName: "",
 		lastName: "",
@@ -24,13 +25,18 @@ export const SignupForm = ({setIsLoggedIn}) => {
 		}));
 	}
 
-    function submitHandler(event) {
+	function submitHandler(event) {
 		event.preventDefault();
-		
-        setIsLoggedIn(true);
-        toast.success("Logged In");
-        navigate("/dashboard");
-    }
+		if (formData.password !== formData.confirmPassword) {
+			toast.error("Password do not match");
+			toast.error("Please try again");
+
+			return;
+		}
+		setIsLoggedIn(true);
+		toast.success("Account Created");
+		navigate("/dashboard");
+	}
 
 	return (
 		<div>
@@ -108,7 +114,7 @@ export const SignupForm = ({setIsLoggedIn}) => {
 						</p>
 						<input
 							name="confirmPassword"
-							type={showPassword ? "text" : "password"}
+							type={confirmPass ? "text" : "password"}
 							required
 							value={formData.confirmPassword}
 							onChange={changeHandler}
@@ -116,17 +122,17 @@ export const SignupForm = ({setIsLoggedIn}) => {
 
 						<span
 							onClick={() => {
-								setShowPassword(!showPassword);
+								setConfirmPass(!confirmPass);
 							}}>
-							{showPassword ? (
+							{confirmPass ? (
 								<AiOutlineEyeInvisible></AiOutlineEyeInvisible>
 							) : (
 								<AiOutlineEye></AiOutlineEye>
 							)}
 						</span>
-                    </label>
-                    
-                    <button>Create Account</button>
+					</label>
+
+					<button>Create Account</button>
 				</div>
 			</form>
 		</div>
