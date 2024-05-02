@@ -1,10 +1,14 @@
 /** @format */
 
 import React, { useState } from "react";
-import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons";
+import toast from "react-hot-toast";
+import { AiOutlineEyeInvisible, AiOutlineEye } from "react-icons/ai";
+import { useNavigate } from "react-router";
+// import { useState } from "react";
 
-export const SignupForm = () => {
+export const SignupForm = ({setIsLoggedIn}) => {
     const [showPassword, setShowPassword] = useState(false);
+    const navigate = useNavigate();
 	const [formData, setFormData] = useState({
 		firstName: "",
 		lastName: "",
@@ -20,6 +24,14 @@ export const SignupForm = () => {
 		}));
 	}
 
+    function submitHandler(event) {
+		event.preventDefault();
+		
+        setIsLoggedIn(true);
+        toast.success("Logged In");
+        navigate("/dashboard");
+    }
+
 	return (
 		<div>
 			<div>
@@ -27,7 +39,7 @@ export const SignupForm = () => {
 				<button>Instructor</button>
 			</div>
 
-			<form>
+			<form onSubmit={submitHandler}>
 				<label>
 					<p>
 						First Name <sub>*</sub>
@@ -47,7 +59,7 @@ export const SignupForm = () => {
 					<input
 						required
 						type="text"
-						name="lastNAme"
+						name="lastName"
 						placeholder="Enter your last name"
 						onChange={changeHandler}
 						value={formData.lastName}></input>
@@ -120,3 +132,5 @@ export const SignupForm = () => {
 		</div>
 	);
 };
+
+export default SignupForm;

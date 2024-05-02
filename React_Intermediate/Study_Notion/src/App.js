@@ -1,12 +1,42 @@
 /** @format */
 
-import "./App.css";
+import logo from "./logo.svg";
+import Navbar from "./components/Navbar";
+import { Route, Routes } from "react-router-dom";
+import Home from "./page/Home";
+import Login from "./page/Login";
+import Signup from "./page/Signup";
+import { useState } from "react";
+import Dashboard from "./page/Dashboard";
+import NotFound from "./page/NotFound";
 
 function App() {
+	const [isLoggedIn, setIsLoggedIn] = useState(false);
 
 	return (
-        <div>App</div>
-    );
+		<div className="App">
+			<Navbar
+				isLoggedIn={isLoggedIn}
+				setIsLoggedIn={setIsLoggedIn}></Navbar>
+			<Routes>
+				<Route
+					path="/"
+					element={<Home></Home>}></Route>
+				<Route
+					path="/signup"
+					element={<Signup setIsLoggedIn={setIsLoggedIn}></Signup>}></Route>
+				<Route
+					path="/login"
+					element={<Login setIsLoggedIn={setIsLoggedIn}></Login>}></Route>
+				<Route
+					path="/dashboard"
+					element={<Dashboard></Dashboard>}></Route>
+				<Route
+					path="*"
+					element={<NotFound></NotFound>}></Route>
+			</Routes>
+		</div>
+	);
 }
 
 export default App;

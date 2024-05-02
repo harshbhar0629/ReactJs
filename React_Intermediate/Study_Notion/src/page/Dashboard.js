@@ -2,8 +2,8 @@ import React from 'react'
 
 function Dashboard() {
   return (
-    <div>Welcomt to Study Notion</div>
-  )
+    <div className='flex justify-center items-center'>Welcomt to Study Notion</div>
+  );
 }
 
 export default Dashboard

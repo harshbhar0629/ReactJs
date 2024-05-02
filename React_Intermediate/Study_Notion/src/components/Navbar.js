@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../assets/Logo.svg";
 import { toast } from "react-hot-toast";
@@ -40,43 +40,33 @@ function Navbar(props) {
 			</nav>
 
 			<div className="flex ml-5 gap-5">
-				{!isLoggedIn &&
-					(
-						<Link to="/login">
-							<button>Log In</button>
-						</Link>
-					)
-				}
-				{!isLoggedIn &&
-					(
-						<Link to="/signup">
-							<button>Sign Up</button>
-						</Link>
-					)
-				}
-				{isLoggedIn &&
-					(
-						<Link to="/">
-						<button onClick={() => {
-							toast.success("Logged Out");
-					     		setIsLoggedIn(false);
-							}
-						}
-						>Log Out</button>
-						</Link>
-					)
-				}
-				{isLoggedIn &&
-					(
-						<Link to="/dashboard">
-							<button>Dashboard</button>
-						</Link>
-					)
-				}
+				{!isLoggedIn && (
+					<Link to="/login">
+						<button>Log In</button>
+					</Link>
+				)}
+				{!isLoggedIn && (
+					<Link to="/signup">
+						<button>Sign Up</button>
+					</Link>
+				)}
+				{isLoggedIn && (
+					<Link to="/">
+						<button
+							onClick={() => {
+								toast.success("Logged Out");
+								setIsLoggedIn(false);
+							}}>
+							Log Out
+						</button>
+					</Link>
+				)}
+				{isLoggedIn && (
+					<Link to="/dashboard">
+						<button>Dashboard</button>
+					</Link>
+				)}
 			</div>
-
-			
-
 		</div>
 	);
 }
