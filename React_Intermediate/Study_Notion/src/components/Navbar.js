@@ -26,15 +26,27 @@ function Navbar(props) {
 			</Link>
 
 			<nav>
-				<ul className="flex gap-x-6 text-[#D4D3E3]">
+				<ul className="flex gap-x-6 text-[#D4D3E3] ">
 					<li>
-						<Link to="/">Home</Link>
+						<Link
+							to="/"
+							className="hover:text-sky-500">
+							Home
+						</Link>
 					</li>
 					<li>
-						<Link to="/">About</Link>
+						<Link
+							to="/"
+							className="hover:text-sky-500">
+							About
+						</Link>
 					</li>
 					<li>
-						<Link to="/">Contact</Link>
+						<Link
+							to="/"
+							className="hover:text-sky-500">
+							Contact
+						</Link>
 					</li>
 				</ul>
 			</nav>

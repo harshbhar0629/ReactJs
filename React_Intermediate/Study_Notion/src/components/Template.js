@@ -37,7 +37,7 @@ export const Template = ({
 					<p className="text-[#2C333f] font-medium leading-[1.375re]">OR</p>
 					<div className="h-[2px] w-full bg-[#2C333F]"></div>
 				</div>
-				<button className="flex items-center w-full justify-center rounded-[8px] font-medium text-[#AFB2BF] border border-[#2C333F] px-[12px] py-[8px] gap-x-2 mt-6">
+				<button className="flex items-center w-full justify-center rounded-[8px] font-medium text-[#AFB2BF] border border-[#2C333F] px-[12px] py-[8px] gap-x-2 mt-6 hover:bg-[#2f3033]">
 					<FcGoogle></FcGoogle>Sign in with Google
 				</button>
 			</div>

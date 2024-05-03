@@ -75,11 +75,15 @@ export const LoginForm = ({ setIsLoggedIn }) => {
 					</span>
 
 					<Link to="#">
-						<p className="text-xs mt-1 text-[#47A5C5] max-w-max ml-auto">Forgot Password</p>
+						<p className="text-xs mt-1 text-[rgb(71,165,197)] max-w-max ml-auto">
+							Forgot Password
+						</p>
 					</Link>
 				</label>
 
-				<button className="w-full rounded-[8px] bg-[#FFD60A] font-medium text-[#000814] px-[12px] py-[8px] mt-6">Sign In</button>
+				<button className="w-full rounded-[8px] bg-[#FFD60A] font-medium text-[#000814] px-[12px] py-[8px] mt-6 hover:bg-[#caa900]">
+					Sign In
+				</button>
 			</form>
 		</div>
 	);
