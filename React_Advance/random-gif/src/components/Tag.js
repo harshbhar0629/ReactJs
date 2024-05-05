@@ -38,7 +38,7 @@ const Tag = () => {
 
 			<button
 				onClick={() => fetchData(tag)}
-				className="w-10/12 bg-yellow-500 text-lg py-2 rounded-lg mb-[20px] uppercase font-medium tracking-wide">
+				className="w-10/12 bg-yellow-400 hover:bg-yellow-500  text-lg py-2 rounded-lg mb-[20px] uppercase font-medium tracking-wide">
 				Generate
 			</button>
 		</div>
