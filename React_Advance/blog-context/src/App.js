@@ -1,11 +1,9 @@
-import logo from './logo.svg';
 import "./App.css"
 import Header from "./components/Header"
 import Footer from "./components/Footer"
 import Blogs from "./components/Blogs"
 import { useContext, useEffect } from 'react';
 import { AppContext } from './context/AppContext';
-// import Spinners from './components/Spinners';
 
 function App() {
   const { fetchBlogPost } = useContext(AppContext);
@@ -15,12 +13,11 @@ function App() {
   }, []);
 
   return (
-    <div className="App w-full h-auto">
+    <div className="App w-full h-full border flex flex-col gap-y-1 justify-center items-center ">
       
-      <Header></Header>
-      <Blogs></Blogs>
-      <Footer></Footer>
-      {/* <Spinners></Spinners> */}
+      <Header ></Header>
+      <Blogs ></Blogs>
+      <Footer ></Footer>
     </div>
   );
 }
