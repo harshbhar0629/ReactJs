@@ -20,7 +20,7 @@ export default function AppContextProvider({ children }) {
 		try {
 			const res = await fetch(url);
 			const output = await res.json();
-			console.log(output);
+			console.log("inside",output);
 			setPage(output.page);
 			setPosts(output.posts);
 			setTotalPages(output.totalPages);
