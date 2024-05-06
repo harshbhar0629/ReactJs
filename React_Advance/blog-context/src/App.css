@@ -4,6 +4,12 @@
 @tailwind components;
 @tailwind utilities;
 
+/* .App{
+    text-align: center;
+    font: 500;
+    color: red;
+} */
+
 html,
 body {
     overflow-x: hidden;

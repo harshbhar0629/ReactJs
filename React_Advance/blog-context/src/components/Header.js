@@ -2,7 +2,11 @@ import React from 'react'
 
 function Header() {
   return (
-    <div>Header</div>
+    <div>
+      <header>
+        <h1 className='uppercase'>Blogs Posts</h1>
+      </header>
+    </div>
   )
 }
 
