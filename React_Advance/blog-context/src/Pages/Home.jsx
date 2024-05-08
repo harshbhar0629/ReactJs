@@ -1,18 +1,18 @@
 /** @format */
 
 import React from "react";
-import Header from "../components/Header";
 import Blogs from "../components/Blogs";
+import Header from "../components/Header";
 import Pagination from "../components/Pagination";
 
 const Home = () => {
 	return (
-		<div className="w-full h-full flex flex-col gap-y-2">
+		<div>
 			<Header />
-			<div>
+			<div className="py-24 mx-auto max-w-[720px] px-[25px] ">
 				<Blogs />
-				<Pagination />
 			</div>
+			<Pagination />
 		</div>
 	);
 };

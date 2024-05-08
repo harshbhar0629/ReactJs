@@ -1,25 +1,22 @@
 /** @format */
 
 import { createContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { baseUrl } from "../baseUrl";
-import {  useNavigate } from "react-router";
 
-// creating and exporting context
 export const AppContext = createContext();
 
-// provider => send data to children function i.e App.js
 export default function AppContextProvider({ children }) {
-	const [loading, setLoading] = useState(false);
 	const [posts, setPosts] = useState([]);
+	const [loading, setLoading] = useState(false);
 	const [page, setPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(null);
 	const navigate = useNavigate();
-	// data filling
 
-	async function fetchBlogPosts(page = 1, tag = null, category) {
+	// Fetch Blog Data
+	const fetchBlogPosts = async (page = 1, tag = null, category) => {
 		setLoading(true);
 		let url = `${baseUrl}?page=${page}`;
-
 		if (tag) {
 			url += `&tag=${tag}`;
 		}
@@ -27,35 +24,34 @@ export default function AppContextProvider({ children }) {
 			url += `&category=${category}`;
 		}
 		try {
-			const response = await fetch(url);
-			const data = await response.json();
-			console.log(data);
+			const res = await fetch(url);
+			const data = await res.json();
+			if (!data.posts || data.posts.length === 0)
+				throw new Error("Something Went Wrong");
+			console.log("Api Response", data);
 			setPage(data.page);
-			setTotalPages(data.totalPages);
 			setPosts(data.posts);
+			setTotalPages(data.totalPages);
 		} catch (error) {
-			console.trace(error);
-			console.log(error);
+			console.log("Error in Fetching BlogPosts", error);
 			setPage(1);
-			setTotalPages(null);
 			setPosts([]);
+			setTotalPages(null);
 		}
-
 		setLoading(false);
-	}
+	};
 
-	function handlePageChange(page) {
+	// Handle When Next and Previous button are clicked
+	const handlePageChange = (page) => {
 		navigate({ search: `?page=${page}` });
 		setPage(page);
-		// fetchBlogPosts(page);
-	}
+	};
 
-	// sending data
 	const value = {
-		loading,
-		setLoading,
 		posts,
 		setPosts,
+		loading,
+		setLoading,
 		page,
 		setPage,
 		totalPages,
@@ -64,6 +60,5 @@ export default function AppContextProvider({ children }) {
 		handlePageChange,
 	};
 
-	// sending App.js the value in the AppContext
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
