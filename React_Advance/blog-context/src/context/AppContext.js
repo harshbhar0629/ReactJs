@@ -14,13 +14,23 @@ export default function AppContextProvider({ children }) {
 	const [page, setPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(null);
 
-	async function fetchBlogPost(page = 1) {
+	async function fetchBlogPost(page = 1, tag = null, category = null) {
 		setLoading(true);
+		// let url = `${baseUrl}?page=${page}`;
 		let url = `${baseUrl}?page=${page}`;
+
+		if (tag) {
+			url += `&tag=${tag}`;
+		}
+
+		if (category) {
+			url += `&category=${category}`;
+		}
+
 		try {
 			const res = await fetch(url);
 			const output = await res.json();
-			console.log("inside",output);
+			console.log("inside", output);
 			setPage(output.page);
 			setPosts(output.posts);
 			setTotalPages(output.totalPages);
