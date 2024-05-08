@@ -2,68 +2,68 @@
 
 import { createContext, useState } from "react";
 import { baseUrl } from "../baseUrl";
+import {  useNavigate } from "react-router";
 
-// step-1 context creation
+// creating and exporting context
 export const AppContext = createContext();
 
-// step-2 create provider and apply
+// provider => send data to children function i.e App.js
 export default function AppContextProvider({ children }) {
-	// child -> App.js
 	const [loading, setLoading] = useState(false);
 	const [posts, setPosts] = useState([]);
 	const [page, setPage] = useState(1);
 	const [totalPages, setTotalPages] = useState(null);
+	const navigate = useNavigate();
+	// data filling
 
-	async function fetchBlogPost(page = 1, tag = null, category = null) {
+	async function fetchBlogPosts(page = 1, tag = null, category) {
 		setLoading(true);
-		// let url = `${baseUrl}?page=${page}`;
 		let url = `${baseUrl}?page=${page}`;
 
 		if (tag) {
 			url += `&tag=${tag}`;
 		}
-
 		if (category) {
 			url += `&category=${category}`;
 		}
-
 		try {
-			const res = await fetch(url);
-			const output = await res.json();
-			console.log("inside", output);
-			setPage(output.page);
-			setPosts(output.posts);
-			setTotalPages(output.totalPages);
+			const response = await fetch(url);
+			const data = await response.json();
+			console.log(data);
+			setPage(data.page);
+			setTotalPages(data.totalPages);
+			setPosts(data.posts);
 		} catch (error) {
-			alert("Something went wrong");
+			console.trace(error);
+			console.log(error);
 			setPage(1);
-			setPosts([]);
 			setTotalPages(null);
+			setPosts([]);
 		}
+
 		setLoading(false);
 	}
 
-	function handlePage(page) {
+	function handlePageChange(page) {
+		navigate({ search: `?page=${page}` });
 		setPage(page);
-		fetchBlogPost(page);
+		// fetchBlogPosts(page);
 	}
 
-	// we have to return this value for its children
+	// sending data
 	const value = {
-		posts,
-		setPosts,
 		loading,
 		setLoading,
+		posts,
+		setPosts,
 		page,
 		setPage,
 		totalPages,
 		setTotalPages,
-		handlePage,
-		fetchBlogPost,
+		fetchBlogPosts,
+		handlePageChange,
 	};
 
+	// sending App.js the value in the AppContext
 	return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }
-
-// export default AppContext;
-// export default AppContextProvider;

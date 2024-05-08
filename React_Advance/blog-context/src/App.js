@@ -1,72 +1,49 @@
 /** @format */
 
-import "./App.css";
-// import Header from "./components/Header";
-// import Footer from "./components/Footer";
-// import Blogs from "./components/Blogs";
-import Home from "./page/Home"
-import BlogPage from "./page/BlogPage"
-import CategoryPage from "./page/CategoryPage"
-import TagPage from "./page/TagPage"
 import { useContext, useEffect } from "react";
 import { AppContext } from "./context/AppContext";
-import { Route, Routes, useLocation, useSearchParams } from "react-router-dom";
+import "./App.css";
+import { Route, Routes, useLocation } from "react-router";
+import { useSearchParams } from "react-router-dom";
+import Home from "./Pages/Home";
+import BlogPage from "./Pages/BlogPage";
+import CategoryPage from "./Pages/CategoryPage";
+import TagPage from "./Pages/TagPage";
 
-function App() {
-  const { fetchBlogPost, page, setPage } = useContext(AppContext);
-  
-  const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
+export default function App() {
+	const { fetchBlogPosts } = useContext(AppContext);
+	const [searchParams, setSearchParams] = useSearchParams();
+	const location = useLocation();
 
-  useEffect(() => {
-    const page = searchParams.get("page") ?? 1;
+	useEffect(() => {
+		// fetchBlogPosts();
+		const page = searchParams.get("page") ?? 1;
 
-    if (location.pathname.includes("tags")) {
-      // iska mtlb tag wala page show krna h
-      const tag = location.pathname.split("/").at(-1).replaceAll("-", " ");
-      fetchBlogPost(Number(page), tag);
-    }
-    else if(location.pathname.includes("categories")){
-      const category = location.pathname.split("/").at(-1).replaceAll("-", " ");
-      fetchBlogPost(Number(page), null, category);
-    }
-    else {
-      fetchBlogPost(Number(page));
-    }
-  }, [location.pathname, location.search]);
+		if (location.pathname.includes("tags")) {
+			const tag = location.pathname.split("/").at(-1).replace("-", " ");
+			fetchBlogPosts(Number(page), tag);
+		} else if (location.pathname.includes("categories")) {
+			const category = location.pathname.split("/").at(-1).replace("-", " ");
+			fetchBlogPosts(Number(page), category);
+		} else {
+			fetchBlogPosts();
+		}
+	}, [location.pathname, location.search]);
 
-/**
- * 
-  useEffect(() => {
-    fetchBlogPost();
-  }, []);
-
- <div className="App w-full h-full border flex flex-col gap-y-1 justify-center items-center ">
-      
-      <Header ></Header>
-      <Blogs ></Blogs>
-      <Footer ></Footer>
-    </div>
-  *
-**/
-
-  return (
-    
+	return (
 		<Routes>
 			<Route
 				path="/"
-				element={<Home></Home>}></Route>
+				element={<Home />}></Route>
 			<Route
-				path="/blog/:blogId"
-				element={<BlogPage></BlogPage>}></Route>
+				path="/blog/:blogID"
+				element={<BlogPage />}></Route>
 			<Route
 				path="/tags/:tag"
-				element={<TagPage></TagPage>}></Route>
+				element={<TagPage />}></Route>
 			<Route
 				path="/categories/:category"
-				element={<CategoryPage></CategoryPage>}></Route>
+				element={<CategoryPage />}></Route>
 		</Routes>
 	);
 }
-
-export default App;
