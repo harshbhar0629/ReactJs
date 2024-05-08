@@ -45,9 +45,9 @@ const BlogPage = () => {
 	}, [location.pathname]);
 
 	return (
-		<div className="py-24 max-w-2xl mx-auto flex flex-col relative">
+		<div className="py-24 max-w-2xl mx-auto flex flex-col relative h-full">
 			<Header />
-			<div className="max-w-[720px] px-[25px] ">
+			<div className="max-w-[720px] px-[25px] h-full">
 				<div>
 					<button
 						className="mb-6 border-2 rounded-md border-[#dfdfdf] py-1 px-4 hover:bg-[#efefef] transition-all"
@@ -56,8 +56,8 @@ const BlogPage = () => {
 					</button>
 				</div>
 				{loading ? (
-					<div>
-						<p> Loading..</p>
+					<div className="min-h-[80vh] w-full flex justify-center items-center">
+						<p className="text-center font-bold text-3xl">Loading..</p>
 					</div>
 				) : blog ? (
 					<div className="flex flex-col gap-y-10">
