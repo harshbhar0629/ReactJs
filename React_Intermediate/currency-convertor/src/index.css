@@ -2,3 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+.setImage{
+    background-image: url('../public/image2.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
