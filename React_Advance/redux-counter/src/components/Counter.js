@@ -4,7 +4,7 @@ import { decrement, increment } from '../redux/slices/CounterSlice';
 
 const Counter = () => {
 
-    // use selector can access your slice by callback fn
+    // use selector can access your slice by callback fn it access the data of your slice
     const count = useSelector((state) => {
         return state.counter.value;
     });

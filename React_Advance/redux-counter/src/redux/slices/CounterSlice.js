@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 /**
- * step-1 createSlice 
+ * step-1 createSlice ({}) we have to send an object which takes 3 parameter name, initialState, function
  * inside createSlice we required 3 parameter name, initialState, reducer 
  * inside reducer we have to tell what functionality we have  
  */
@@ -26,4 +26,4 @@ export const CounterSlice = createSlice({
 });
 
 export const { increment, decrement } = CounterSlice.actions;
-export default CounterSlice.reducer;
+export default CounterSlice.reducer; // reducers contains functionality
