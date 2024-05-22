@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Spinner from "../components/Spinner";
-import Products from "../components/Products"
+import Products from "../components/Products";
 
 const Home = () => {
 	const API_URL = "https://fakestoreapi.com/products";
@@ -14,8 +14,8 @@ const Home = () => {
 		try {
 			const response = await fetch(API_URL);
 			const output = await response.json();
-      setPosts(output);
-      console.log(output);
+			setPosts(output);
+			console.log(output);
 		} catch (e) {
 			console.log("error aya h");
 		}
@@ -32,8 +32,10 @@ const Home = () => {
 				<Spinner></Spinner>
 			) : posts.length > 0 ? (
 				<div>
-            {posts.map((post) => (
-						<Products key={post.id} post={post}></Products>
+					{posts.map((post) => (
+						<Products
+							key={post.id}
+							post={post}></Products>
 					))}
 				</div>
 			) : (

@@ -1,8 +1,9 @@
 import React from 'react'
+import "../App.css"
 
 const Spinner = () => {
   return (
-    <div>Spinner</div>
+    <div className='loader'></div>
   )
 }
 

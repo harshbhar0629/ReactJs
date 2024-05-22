@@ -1,13 +1,27 @@
-import React, { useEffect, useState } from 'react'
+/** @format */
 
-const Products = ({post}) => {
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { add, remove } from "../redux/Slices/CartSlices";
+import { toast } from "react-toastify";
 
-  useEffect(() => {
-    console.log("hey:",post.image);
-  }, []);
+const Products = ({ post }) => {
+	console.log(post)
+	const { cart } = useSelector((state) => state);
+	console.log(cart)
 
-  const [selected, setSelected] = useState(false);
-  return (
+	const dispatch = useDispatch();
+	const addToCart = () => {
+		dispatch(add(post));
+		toast.success("Item added to Cart");
+	};
+
+	const removeFromCart = () => {
+		dispatch(remove(post.id));
+		toast.success("Item remove from Cart");
+	};
+
+	return (
 		<div>
 			<div>
 				<p>{post.title}</p>
@@ -16,14 +30,23 @@ const Products = ({post}) => {
 				<p>{post.description}</p>
 			</div>
 			<div>
-				<img src={post.image} alt='image ayege jrur' width={100} height={100}></img>
+				<img
+					src={post.image}
+					alt="Image ayege jrur"
+					width={100}
+					height={100}></img>
 			</div>
 			<div>
-				<p>{post.price}</p>
+				<p>${post.price}</p>
 			</div>
-			<button>{selected ? <p>Remove Item</p> : <p>Add to Cart</p>}</button>
+
+			{cart.some((p) => p.id === post.id) ? (
+				<button onClick={removeFromCart}>Remove Item</button>
+			) : (
+				<button onClick={addToCart}>Add To Cart</button>
+			)}
 		</div>
 	);
-}
+};
 
 export default Products;
