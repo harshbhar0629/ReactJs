@@ -8,8 +8,8 @@ import Cart from "./pages/Cart"
 
 function App() {
 	return (
-		<div className="App">
-			<div>
+		<div className="w-full h-full">
+			<div className="bg-slate-900 ">
 				<Navbar />
 			</div>
 			<Routes>

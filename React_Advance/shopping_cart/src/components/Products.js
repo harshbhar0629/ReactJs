@@ -21,13 +21,15 @@ const Products = ({ post }) => {
 		toast.error("Item removed from Cart");
 	};
 
+	const description = post.description;
+
 	return (
-		<div>
+		<div className="flex flex-col items-center justify-between hover:scale-110 transition-all duration-300 ease-in">
 			<div>
 				<p>{post.title}</p>
 			</div>
 			<div>
-				<p>{post.description}</p>
+				<p>{description.substr(0, 60)+ "..."}</p>
 			</div>
 			<div>
 				<img
