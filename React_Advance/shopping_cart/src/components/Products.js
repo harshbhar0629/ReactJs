@@ -3,7 +3,7 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { add, remove } from "../redux/Slices/CartSlices";
-import { toast } from "react-toastify";
+import { toast } from "react-hot-toast";
 
 const Products = ({ post }) => {
 	console.log(post)
@@ -18,7 +18,7 @@ const Products = ({ post }) => {
 
 	const removeFromCart = () => {
 		dispatch(remove(post.id));
-		toast.success("Item remove from Cart");
+		toast.error("Item removed from Cart");
 	};
 
 	return (
