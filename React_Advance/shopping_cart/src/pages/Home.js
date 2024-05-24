@@ -27,11 +27,11 @@ const Home = () => {
 	}, []);
 
 	return (
-		<div className="max-w-6xl mx-auto h-full">
+		<div className="md:max-w-5xl lg:max-w-6xl xl:max-w-7xl max-w-[90%] mx-auto h-full mb-[50px]">
 			{loading ? (
 				<Spinner></Spinner>
 			) : posts.length > 0 ? (
-				<div className=" grid grid-cols-4 max-w-6xl p-4 mx-auto space-y-10 gap-x-5 min-h-[80vh]">
+				<div className=" grid xs:grid-cols-2 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 lg:grid-cols-4 grid-cols-1 p-4 mx-auto space-y-10 gap-x-5 min-h-[80vh]">
 					{posts.map((post) => (
 						<Products
 							key={post.id}

@@ -9,24 +9,25 @@ const Navbar = () => {
 	const { cart } = useSelector((state) => state);
 	return (
 		<div className="w-full">
-			<nav className="flex items-center h-20 max-w-6xl justify-between mx-auto">
+			<nav className="flex items-center h-20 md:max-w-5xl lg:max-w-6xl xl:max-w-7xl max-w-[90%]  justify-between mx-auto">
 				<NavLink to="/">
 					<div className="ml-5">
 						<img
 							src="../logo.png"
 							alt="img h"
-							className="h-14"></img>
+							className="sm:h-14 h-10 transition-all duration-200"></img>
 					</div>
 				</NavLink>
 
-				<div className="flex items-center font-medium text-slate-100 mr-5 space-x-6">
+				<div className="flex items-center font-medium text-slate-100 mr-5 sm:space-x-6 space-x-2">
 					<NavLink to="/">
-						<p className=" font-medium text-[13px]">Home</p>
+						<p className=" cursor-pointer hover:text-green-400 transition duration-300 ease-in">
+							Home
+						</p>
 					</NavLink>
 					<NavLink to="/cart">
 						<div className="relative">
-							{
-								cart.length > 0 ? (
+							{cart.length > 0 ? (
 								<span className="absolute -top-1 -right-2 bg-green-600 text-xs w-5 h-5 flex justify-center items-center animate-bounce rounded-full text-white z-10">
 									{cart.length}
 								</span>
