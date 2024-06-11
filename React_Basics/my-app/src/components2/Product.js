@@ -1,8 +1,5 @@
 import './Product.css'
 import { useState } from 'react';
-import ItemDate from './ItemDate';
-import ItemName from './ItemName';
-import Button from './Button';
 
 function Product(props) {
 
