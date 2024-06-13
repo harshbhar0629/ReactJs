@@ -11,7 +11,7 @@ function Form() {
 		address: "",
 		city: "",
 		state: "",
-		postalCode: "",
+		pinCode: "",
 		comments: false,
 		candidates: false,
 		offers: false,
@@ -41,16 +41,16 @@ function Form() {
 	}
 
 	return (
-		<div className="w-[60%] flex mx-auto flex-col justify-start items-start shadow-lg hover:shadow-2xl transition-all duration-500 mt-[40px] mb-[40px]">
+		<div className="w-[60%] flex mx-auto flex-col justify-start items-start shadow-2xl bg-white hover:shadow-2xl transition-all duration-500 mt-[40px] rounded-md">
 			<form className="w-[100%]  mt-[20px] mb-[20px] px-[40px] ">
 				<label
 					htmlFor="firstName"
-					className="text-sm font-medium leading-6 text-gray-900">
+					className="text-sm font-medium leading-6 text-gray-900 mt-[10px] mb-[-5px]">
 					First Name:
 				</label>
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					onChange={changeHandler}
 					placeholder="Enter your first name.."
 					id="firstName"
@@ -61,13 +61,13 @@ function Form() {
 				<br></br>
 				<label
 					htmlFor="lastName"
-					className="text-sm font-medium leading-6 text-gray-900">
+					className="text-sm font-medium leading-6 text-gray-900 mt-[20px] ">
 					Last Name:
 				</label>
 
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					onChange={changeHandler}
 					placeholder="Enter your last name.."
 					id="lastName"
@@ -83,7 +83,7 @@ function Form() {
 				</label>
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					onChange={changeHandler}
 					placeholder="Enter your email.."
 					type="email"
@@ -93,13 +93,13 @@ function Form() {
 
 				<br></br>
 				<label
-					className="text-sm font-medium leading-6 text-gray-900"
+					className="text-sm font-medium leading-6 text-gray-900 mt-[10px]"
 					htmlFor="country">
 					Country
 				</label>
 				<br></br>
 				<select
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 bg-white"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 bg-white"
 					id="country"
 					name="country"
 					onChange={changeHandler}
@@ -118,7 +118,7 @@ function Form() {
 				</label>
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					type="text"
 					placeholder="Enter your address.."
 					id="address"
@@ -134,7 +134,7 @@ function Form() {
 				</label>
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					type="text"
 					placeholder="Enter your city.."
 					id="city"
@@ -150,7 +150,7 @@ function Form() {
 				</label>
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					type="text"
 					placeholder="Enter your state.."
 					id="state"
@@ -160,24 +160,24 @@ function Form() {
 
 				<br></br>
 				<label
-					className="text-sm font-medium leading-6 text-gray-900"
-					htmlFor="postalCode">
-					ZIP / Postal code
+					className="text-sm font-medium leading-2 text-gray-900 "
+					htmlFor="pinCode">
+					ZIP / Pin code
 				</label>
 				<br></br>
 				<input
-					className="mt-2 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
+					className="mt-1 w-full rounded-md p-2 text-gray-900 shadow-sm ring-1 placeholder:text-gray-400"
 					type="number"
 					onChange={changeHandler}
-					placeholder="Enter ZIP code.."
-					value={formData.postalCode}
-					name="postalCode"
-					id="postalCode"></input>
+					placeholder="Enter pin code.."
+					value={formData.pinCode}
+					name="pinCode"
+					id="pinCode"></input>
 
-				<div className="text-md font-medium leading-6 text-gray-900 mt-[10px] mb-[10px]">
+				<div className="text-md font-medium leading-6 text-gray-900 mt-[15px] mb-[10px]">
 					By Email
 				</div>
-				<div className="flex justify-center flex-col mt-[15px]">
+				<div className="flex justify-center flex-col mt-[10px]">
 					<div className="flex items-center">
 						<input
 							className="mt-[2px]"
