@@ -8,7 +8,6 @@ function Form() {
 		firstName: "",
 		lastName: "",
 		email: "",
-		country: "",
 		address: "",
 		city: "",
 		state: "",
@@ -17,6 +16,7 @@ function Form() {
 		candidates: false,
 		offers: false,
 		notifications: "",
+		country: "India",
 	});
 	// console.log(formData);
 
