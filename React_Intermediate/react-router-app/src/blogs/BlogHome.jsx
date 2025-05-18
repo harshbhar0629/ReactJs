@@ -30,7 +30,7 @@ const BlogHome = () => {
 				<p>Explore interesting articles and insights.</p>
 				<button
 					style={styles.button}
-					onClick={() => (window.location.href = "/blog")}>
+					onClick={() => (window.location.href = "/view-blog")}>
 					View Blog
 				</button>
 			</main>
