@@ -1,14 +1,17 @@
 /** @format */
 
-import logo from "./logo.svg";
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import About from "./components/About";
-import Home from "./components/Home";
-import Labs from "./components/Labs";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import NotFound from "./components/NotFound";
-import Support from "./components/Support";
 import { Link, NavLink } from "react-router-dom";
+import CreateBlog from "./blogs/CreateBlog";
+import ViewBlogs from "./blogs/ViewBlogs";
+import Login from "./blogs/Login";
+import Signup from "./blogs/Signup";
+import BlogHome from "./blogs/BlogHome";
+import { useDispatch, useSelector } from "react-redux";
+import toast from "react-hot-toast";
+import { setToken, setSignupData } from "./slice/authSlice";
 
 /**
  * Routes => it creates multiple routes
@@ -21,67 +24,74 @@ import { Link, NavLink } from "react-router-dom";
  * <Route path="/support" element={<div>Support Page</div>}></Route>
  *
  * what it does => when our path is support then dupport page render
- * 
+ *
  * <Link to="/support">Support</Link>
  * what it does => it link the routes means whatever path is described in routes to render its element you have to just mention in link whwn we click on link element then it hit routes path and routes element render on screen
- * 
- * 
+ *
+ *
  * link vs navlink the main difference is that link render routes element but navlink actually add the active class to its rendering element if another element render then its  remove active class and add active to another rendering routes
  *
  * @returns
  */
 
 function App() {
-	return (
-		<div className="App">
-			{/* <Routes>
-				<Route
-					path="/"
-					element={<div>Home Page</div>}></Route>
-				<Route
-					path="/support"
-					element={<div>Support Page</div>}></Route>
-				<Route
-					path="/about"
-					element={<div>About Page</div>}></Route>
-				<Route
-					path="/labs"
-					element={<div>Labs Page</div>}></Route>
-				<Route
-					path="*"
-					element={<div>Invalid Path</div>}></Route>
-			</Routes> */}
+	const token = useSelector((state) => state.auth.token);
+	const dispatch = useDispatch();
 
+	console.log(token)
+	return (
+		<div>
 			<nav>
-				<ul>
-					<li>
+				<div
+					style={{
+						display: "flex",
+						justifyContent: "center",
+						alignItems: "center",
+						gap: "20px",
+					}}>
+					<div>
 						<NavLink to="/">Home</NavLink>
-					</li>
-					<li>
-						<NavLink to="/support">Support</NavLink>
-					</li>
-					<li>
-						<NavLink to="/about">About</NavLink>
-					</li>
-					<li>
-						<NavLink to="/labs">Labs</NavLink>
-					</li>
-				</ul>
+					</div>
+					<div>
+						<NavLink to="/create-blog">Create Blog</NavLink>
+					</div>
+					<div>
+						<NavLink to="/view-blog">View Blog</NavLink>
+					</div>
+					{token && (
+						<div onClick={() => {
+							dispatch(setToken(null));
+							dispatch(setSignupData(null));
+							localStorage.removeItem("token");
+							toast.success("Logout Successfully");
+						}}>
+							<NavLink to="/">LogOut</NavLink>
+						</div>
+					)}
+					{!token && (
+						<div>
+							<NavLink to="/login">Login</NavLink>
+						</div>
+					)}
+				</div>
 			</nav>
 
 			<Routes>
 				<Route
 					path="/"
-					element={<Home></Home>}></Route>
+					element={<BlogHome></BlogHome>}></Route>
 				<Route
-					path="/support"
-					element={<Support></Support>}></Route>
+					path="/create-blog"
+					element={<CreateBlog />}></Route>
 				<Route
-					path="/about"
-					element={<About></About>}></Route>
+					path="/view-blog"
+					element={<ViewBlogs />}></Route>
 				<Route
-					path="/labs"
-					element={<Labs></Labs>}></Route>
+					path="/login"
+					element={<Login />}></Route>
+				<Route
+					path="/signup"
+					element={<Signup />}></Route>
 				<Route
 					path="*"
 					element={<NotFound></NotFound>}></Route>
